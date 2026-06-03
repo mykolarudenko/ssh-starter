@@ -874,8 +874,10 @@ class SshLauncherApp(App[None]):
         self._refresh_status()
 
     def _refresh_status(self) -> None:
-        filter_display = self.filter_text or "none"
-        self.query_one("#filter-line", Static).update(f"Filter: {filter_display}")
+        if self.filter_text:
+            self.query_one("#filter-line", Static).update(f"Filter: {self.filter_text}")
+        else:
+            self.query_one("#filter-line", Static).update("Start typing to filter SSH servers")
         self.query_one("#status-summary", Static).update(
             "Enter connect | Esc Esc exit | "
             f"Servers {len(self.connection_groups)} total/{len(self.filtered_groups)} shown | "

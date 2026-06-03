@@ -1,5 +1,8 @@
 # ssh-starter
 
+[![PyPI version](https://img.shields.io/pypi/v/ssh-starter.svg)](https://pypi.org/project/ssh-starter/)
+[![Downloads](https://static.pepy.tech/badge/ssh-starter)](https://pepy.tech/project/ssh-starter)
+
 `ssh-starter` is a full-screen Textual TUI for launching SSH profiles from an OpenSSH config.
 
 It scans `~/.ssh/config` by default, groups concrete `Host` aliases by visible server target (`HostName`/alias + port), shows those groups in a three-column grid using the default profile alias as the caption, and starts the real `ssh` command after a profile is selected.
