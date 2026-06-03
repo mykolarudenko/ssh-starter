@@ -6,6 +6,8 @@ It scans `~/.ssh/config` by default, groups concrete `Host` aliases by visible s
 
 The three grid columns automatically resize to the current terminal width. The UI is designed for vertical scrolling only; tables fit horizontally into the visible terminal width. The status line shows compact key hints. Mouse selection is supported when the terminal forwards mouse events.
 
+`ssh-starter` works on Linux and Windows with Python 3.11+ and OpenSSH available on `PATH`.
+
 ![Anonymized ssh-starter main window screenshot](docs/assets/main-window.png)
 
 ## Tool installation
@@ -138,6 +140,7 @@ C:\Users\<user>\.ssh\config
 - `Esc` — clear the current search filter.
 
 The status line shows total discovered servers, visible filtered servers, profile count, the current filter, and compact key hints including exit shortcuts.
+The bottom `F1`/`F2`/`F3`/`F4`/`F10` shortcut labels are clickable when mouse events are enabled.
 
 ## Options
 
@@ -234,7 +237,7 @@ For installed `pipx`/`uv tool` usage, `ssh-starter` uses a user-level `config.to
 Default locations:
 
 ```text
-Linux/macOS: $XDG_CONFIG_HOME/ssh-starter/config.toml or ~/.config/ssh-starter/config.toml
+Linux:      $XDG_CONFIG_HOME/ssh-starter/config.toml or ~/.config/ssh-starter/config.toml
 Windows:     %APPDATA%\ssh-starter\config.toml
 ```
 

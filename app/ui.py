@@ -11,7 +11,7 @@ from rich.text import Text
 from textual import events
 from textual.app import App, ComposeResult
 from textual.binding import Binding
-from textual.containers import Container, VerticalScroll
+from textual.containers import Container, Horizontal, VerticalScroll
 from textual.screen import ModalScreen
 from textual.widgets import DataTable, Header, Input, Markdown, Static
 
@@ -46,6 +46,27 @@ class MainProfileGrid(DataTable):
             event.prevent_default()
             event.stop()
             return
+
+
+class StatusShortcut(Static):
+    """Clickable bottom-bar shortcut label."""
+
+    def __init__(self, shortcut: str, caption: str, action_name: str) -> None:
+        super().__init__(_status_shortcut_label(shortcut, caption), classes="status-button")
+        self.action_name = action_name
+
+    def on_click(self, event: events.Click) -> None:
+        event.stop()
+        action = getattr(self.app, f"action_{self.action_name}")
+        action()
+
+
+def _status_shortcut_label(shortcut: str, caption: str) -> Text:
+    """Render a Midnight Commander-style clickable shortcut."""
+    label = Text()
+    label.append(f" {shortcut} ", style="reverse bold")
+    label.append(f"{caption} ", style="bold")
+    return label
 
 
 class ProfileInfoScreen(ModalScreen[None]):
@@ -612,9 +633,32 @@ class SshLauncherApp(App[None]):
 
     #status-line {
         height: 1;
+        layout: horizontal;
         background: $accent;
         color: $text;
+        padding: 0;
+    }
+
+    .status-button {
+        height: 1;
+        width: auto;
+        padding: 0;
+        background: $accent;
+        color: $text;
+        text-style: bold;
+    }
+
+    .status-button:hover {
+        background: $primary;
+        color: $text;
+    }
+
+    #status-summary {
+        height: 1;
+        width: 1fr;
         padding: 0 1;
+        background: $accent;
+        color: $text;
     }
     """
 
@@ -644,7 +688,15 @@ class SshLauncherApp(App[None]):
         yield Header(show_clock=False)
         yield Static(id="filter-line")
         yield MainProfileGrid(id="profile-grid")
-        yield Static(id="status-line")
+        yield Horizontal(
+            StatusShortcut("F1", "Help", "help"),
+            StatusShortcut("F2", "Options", "options"),
+            StatusShortcut("F3", "Info", "profile_info"),
+            StatusShortcut("F4", "Users", "choose_user"),
+            StatusShortcut("F10", "Exit", "quit"),
+            Static(id="status-summary"),
+            id="status-line",
+        )
 
     def on_mount(self) -> None:
         table = self._table()
@@ -702,6 +754,11 @@ class SshLauncherApp(App[None]):
             self._move_cursor_to_last_group()
             return
         self.action_connect()
+
+    def on_data_table_cell_highlighted(self, event: DataTable.CellHighlighted) -> None:
+        if self.filtered_groups and self._is_empty_grid_coordinate(event.coordinate.row, event.coordinate.column):
+            event.stop()
+            self._move_cursor_to_last_group()
 
     def on_data_table_row_selected(self, event: DataTable.RowSelected) -> None:
         event.stop()
@@ -819,9 +876,8 @@ class SshLauncherApp(App[None]):
     def _refresh_status(self) -> None:
         filter_display = self.filter_text or "none"
         self.query_one("#filter-line", Static).update(f"Filter: {filter_display}")
-        self.query_one("#status-line", Static).update(
-            "Enter connect | F4 users | F1 help | F2 options | F3 info | "
-            "F10/Esc Esc exit | "
+        self.query_one("#status-summary", Static).update(
+            "Enter connect | Esc Esc exit | "
             f"Servers {len(self.connection_groups)} total/{len(self.filtered_groups)} shown | "
             f"Profiles {len(self.inventory.profiles)}"
         )
