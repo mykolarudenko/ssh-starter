@@ -1,0 +1,44 @@
+[project]
+name = "ssh-starter"
+version = "0.1.0"
+description = "Full-screen TUI launcher for SSH profiles."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Mykola Rudenko" },
+]
+keywords = ["ssh", "tui", "textual", "terminal", "openssh"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Systems Administration",
+]
+dependencies = [
+    "pydantic",
+    "textual",
+]
+
+[project.urls]
+Homepage = "https://github.com/mykolarudenko/ssh-starter"
+Repository = "https://github.com/mykolarudenko/ssh-starter"
+Issues = "https://github.com/mykolarudenko/ssh-starter/issues"
+
+[project.scripts]
+ssh-starter = "app.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

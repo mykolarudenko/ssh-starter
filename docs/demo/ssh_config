@@ -1,0 +1,248 @@
+# Demo SSH config generated for ssh-starter documentation.
+# All aliases, users, hostnames, IP addresses, and key paths are synthetic.
+
+Host kestrel-cache-01-operator
+    HostName kestrel-cache-01.tail-example.ts.net
+    User operator
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_atlas
+
+Host kestrel-cache-01-root
+    HostName kestrel-cache-01.tail-example.ts.net
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_lab
+
+Host cedar-backup-03-deploy
+    HostName cedar-backup-03.tail-example.ts.net
+    User deploy
+    Port 22
+    IdentityFile ~/.ssh/id_rsa_legacy
+
+Host willow-core-04-ops
+    HostName willow-core-04.tail-example.ts.net
+    User ops
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_ops
+
+Host meridian-edge-05-admin
+    HostName meridian-edge-05.tail-example.ts.net
+    User admin
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_atlas
+
+Host raven-core-06-operator
+    HostName raven-core-06.tail-example.ts.net
+    User operator
+    Port 22
+
+Host kestrel-backup-07-root
+    HostName 10.44.26.52
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_rsa_legacy
+
+Host kestrel-backup-07-root-2
+    HostName 172.20.27.59
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_ops
+
+Host solstice-db-09-root
+    HostName solstice-db-09.example.net
+    User root
+    Port 2222
+    IdentityFile ~/.ssh/id_ed25519_atlas
+    ProxyJump jump-04.example.net
+
+Host solstice-db-09-root-2
+    HostName solstice-db-09.example.net
+    User root
+    Port 2222
+    IdentityFile ~/.ssh/id_ed25519_lab
+    ProxyJump jump-05.example.net
+
+Host solstice-db-09-root-3
+    HostName solstice-db-09.example.net
+    User root
+    Port 2222
+    IdentityFile ~/.ssh/id_rsa_legacy
+    ProxyJump jump-01.example.net
+
+Host solstice-db-09-root-4
+    HostName solstice-db-09.example.net
+    User root
+    Port 2222
+    IdentityFile ~/.ssh/id_ed25519_ops
+    ProxyJump jump-02.example.net
+
+Host aurora-worker-13-deploy
+    HostName aurora-worker-13.tail-example.ts.net
+    User deploy
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_atlas
+
+Host aurora-worker-13-root
+    HostName aurora-worker-13.tail-example.ts.net
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_lab
+
+Host lumen-worker-15-admin
+    HostName lumen-worker-15.example.net
+    User admin
+    Port 22
+    IdentityFile ~/.ssh/id_rsa_legacy
+
+Host juniper-edge-16-root
+    HostName juniper-edge-16.tail-example.ts.net
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_ops
+
+Host prairie-worker-17-root
+    HostName 198.51.100.122
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_atlas
+
+Host prairie-worker-17-deploy
+    HostName 203.0.113.129
+    User deploy
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_lab
+
+Host aurora-lab-19-root
+    HostName aurora-lab-19.tail-example.ts.net
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_rsa_legacy
+
+Host onyx-lab-20-admin
+    HostName 198.51.100.143
+    User admin
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_ops
+
+Host lumen-lab-21-operator
+    HostName 203.0.113.150
+    User operator
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_atlas
+
+Host falcon-core-22-root
+    HostName falcon-core-22.tail-example.ts.net
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_lab
+
+Host meridian-worker-23-deploy
+    HostName meridian-worker-23.tail-example.ts.net
+    User deploy
+    Port 22
+    IdentityFile ~/.ssh/id_rsa_legacy
+
+Host meridian-worker-23-root
+    HostName meridian-worker-23.tail-example.ts.net
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_ops
+
+Host meridian-worker-23-admin
+    HostName meridian-worker-23.tail-example.ts.net
+    User admin
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_atlas
+
+Host lumen-backup-26-operator
+    HostName lumen-backup-26.tail-example.ts.net
+    User operator
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_lab
+
+Host lumen-backup-26-root
+    HostName lumen-backup-26.tail-example.ts.net
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_rsa_legacy
+
+Host ember-lab-28-deploy
+    HostName ember-lab-28.tail-example.ts.net
+    User deploy
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_ops
+
+Host harbor-lab-29-root
+    HostName 198.51.100.206
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_atlas
+
+Host harbor-lab-29-admin
+    HostName 203.0.113.13
+    User admin
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_lab
+
+Host cedar-media-31-root
+    HostName 192.0.2.20
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_rsa_legacy
+
+Host cedar-media-31-root-2
+    HostName 198.51.100.27
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_ops
+
+Host nova-core-33-deploy
+    HostName 203.0.113.34
+    User deploy
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_atlas
+
+Host harbor-backup-34-ops
+    HostName harbor-backup-34.tail-example.ts.net
+    User ops
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_lab
+
+Host falcon-db-35-admin
+    HostName falcon-db-35.example.net
+    User admin
+    Port 22
+    IdentityFile ~/.ssh/id_rsa_legacy
+    ProxyJump jump-05.example.net
+
+Host juniper-lab-36-operator
+    HostName juniper-lab-36.tail-example.ts.net
+    User operator
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_ops
+
+Host prairie-lab-37-root
+    HostName prairie-lab-37.example.net
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_atlas
+    ProxyJump jump-02.example.net
+
+Host kestrel-worker-38-deploy
+    HostName kestrel-worker-38.tail-example.ts.net
+    User deploy
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_lab
+
+Host kestrel-worker-38-ops
+    HostName kestrel-worker-38.tail-example.ts.net
+    User ops
+    Port 22
+    IdentityFile ~/.ssh/id_rsa_legacy
+
+Host willow-media-40-admin
+    HostName willow-media-40.example.net
+    User admin
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519_ops
+    ProxyJump jump-05.example.net

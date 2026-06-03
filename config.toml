@@ -1,0 +1,3 @@
+ssh_config_path = "~/.ssh/config"
+term_string = "xterm-256color"
+preferred_users = ["root"]
