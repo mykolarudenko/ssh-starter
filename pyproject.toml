@@ -1,6 +1,6 @@
 [project]
 name = "ssh-starter"
-version = "0.1.0"
+version = "0.1.1"
 description = "Full-screen TUI launcher for SSH profiles."
 readme = "README.md"
 requires-python = ">=3.11"
