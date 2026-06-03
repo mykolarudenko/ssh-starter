@@ -23,7 +23,7 @@ GRID_COLUMNS = 3
 FIT_HORIZONTAL_RESERVE = 2
 DOUBLE_ESCAPE_SECONDS = 1.25
 SEARCH_EXTRA_CHARS = {"-", "_", ".", "@"}
-USER_PICKER_KEYS = {"shift+enter", "ctrl+enter", "ctrl+j", "ctrl+m"}
+USER_PICKER_KEYS = {"f4", "shift+enter", "ctrl+enter", "ctrl+j", "ctrl+m", "ctrl+@"}
 
 
 class MainProfileGrid(DataTable):
@@ -311,8 +311,9 @@ class HelpScreen(ModalScreen[None]):
 ## Main menu
 
 - `Enter` connects to the selected server with its default profile.
-- `Shift+Enter` opens the user/profile picker.
-- `Ctrl+Enter` is still accepted when the terminal sends it through. Some terminals encode it as `Ctrl+J` or `Ctrl+M`; those are supported too.
+- `F4` opens the user/profile picker.
+- `Shift+Enter` also opens the picker when the terminal reports it distinctly from plain `Enter`.
+- `Ctrl+Enter` is still accepted when the terminal sends it through. Some terminals encode modified Enter keys as `Ctrl+J`, `Ctrl+M`, or `Ctrl+@`; those are supported too.
 - `F1` opens this help.
 - `F2` opens options.
 - `F3` opens details for the selected server's default profile.
@@ -580,10 +581,12 @@ class SshLauncherApp(App[None]):
 
     BINDINGS = [
         Binding("enter", "connect", "Connect"),
+        Binding("f4", "choose_user", "Users", priority=True),
         Binding("shift+enter", "choose_user", "Users", priority=True),
         Binding("ctrl+enter", "choose_user", "Users", show=False, priority=True),
         Binding("ctrl+j", "choose_user", "Users", show=False, priority=True),
         Binding("ctrl+m", "choose_user", "Users", show=False, priority=True),
+        Binding("ctrl+@", "choose_user", "Users", show=False, priority=True),
         Binding("f1", "help", "Help", priority=True),
         Binding("f2", "options", "Options", priority=True),
         Binding("f3", "profile_info", "Info"),
@@ -817,10 +820,10 @@ class SshLauncherApp(App[None]):
         filter_display = self.filter_text or "none"
         self.query_one("#filter-line", Static).update(f"Filter: {filter_display}")
         self.query_one("#status-line", Static).update(
-            "Enter connect | Shift+Enter users | "
-            f"Servers: {len(self.connection_groups)} total/{len(self.filtered_groups)} visible | "
-            f"Profiles: {len(self.inventory.profiles)} | "
-            "F1 help | F2 options | F3 info | F10 exit | Esc Esc exit"
+            "Enter connect | F4 users | F1 help | F2 options | F3 info | "
+            "F10/Esc Esc exit | "
+            f"Servers {len(self.connection_groups)} total/{len(self.filtered_groups)} shown | "
+            f"Profiles {len(self.inventory.profiles)}"
         )
 
     def _selected_group(self) -> SshConnectionGroup | None:

@@ -123,8 +123,9 @@ C:\Users\<user>\.ssh\config
 ## Keys
 
 - `Enter` — connect to the selected server with its default profile.
-- `Shift+Enter` — open the user/profile picker for the selected server.
-- `Ctrl+Enter` — also accepted when the terminal passes it through. Some terminals send this as `Ctrl+J` or `Ctrl+M`; `ssh-starter` handles those too.
+- `F4` — open the user/profile picker for the selected server.
+- `Shift+Enter` — also opens the picker when the terminal reports it distinctly from plain `Enter`.
+- `Ctrl+Enter` — also accepted when the terminal passes it through. Some terminals encode modified Enter keys as `Ctrl+J`, `Ctrl+M`, or `Ctrl+@`; `ssh-starter` handles those too.
 - `F1` — open help.
 - `F2` — open options.
 - `F3` — show details for the selected server's default profile.
@@ -167,7 +168,7 @@ The default profile for a group is selected in this order:
 1. users listed in `preferred_users`;
 2. the first sorted profile in the group.
 
-`Enter` connects with that default profile. `Ctrl+Enter` opens a menu where you can select another user/profile for the same server. Clicking a server in the main grid connects with the default profile; clicking a profile in the picker selects that profile.
+`Enter` connects with that default profile. `F4` opens a menu where you can select another user/profile for the same server. Clicking a server in the main grid connects with the default profile; clicking a profile in the picker selects that profile.
 
 ## Sorting and history
 
